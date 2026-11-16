@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#28563a">
+  <meta name="description" content="Todo Limpio: encontrá nuestros medios de contacto y alias.">
+  <title>TODO LIMPIO</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 16px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #24352a;
+      background: linear-gradient(145deg, #eaf1e8, #f7f8f4);
+    }
+    .card {
+      width: 100%;
+      max-width: 440px;
+      padding: 30px 24px;
+      border-radius: 24px;
+      background: #fff;
+      box-shadow: 0 16px 45px rgba(35, 75, 48, .12);
+      text-align: center;
+    }
+    .mark {
+      width: 74px;
+      height: 74px;
+      margin: 0 auto 14px;
+      display: grid;
+      place-items: center;
+      border-radius: 22px;
+      color: #fff;
+      background: #28563a;
+      font-size: 34px;
+    }
+    h1 {
+      margin: 0;
+      color: #28563a;
+      font-size: clamp(2rem, 8vw, 2.6rem);
+      letter-spacing: 2px;
+    }
+    .subtitle {
+      margin: 9px 0 24px;
+      color: #64776a;
+      font-size: 1rem;
+    }
+    .section-title {
+      margin: 22px 0 11px;
+      color: #355d42;
+      font-size: .83rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+    .link {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 15px 18px;
+      border: 0;
+      border-radius: 13px;
+      background: #28563a;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .15s ease, background .15s ease;
+    }
+    .link:hover { background: #1f452e; transform: translateY(-1px); }
+    .social {
+      background: #edf3ed;
+      color: #28563a;
+    }
+    .social:hover { background: #dfeade; }
+    .hint {
+      min-height: 18px;
+      margin: 8px 0 0;
+      color: #47734f;
+      font-size: .85rem;
+    }
+    footer {
+      margin-top: 25px;
+      color: #89958b;
+      font-size: .78rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="mark" aria-hidden="true">✦</div>
+    <h1>TODO LIMPIO</h1>
+    <p class="subtitle">¡Gracias por elegirnos!</p>
+
+    <p class="section-title">Nuestros alias</p>
+    <button class="link" type="button" onclick="copiarAlias('todolimpio2024')">
+      COPIAR ALIAS 1 · todolimpio2024
+    </button>
+    <button class="link" type="button" onclick="copiarAlias('todolimpio2026')">
+      COPIAR ALIAS 2 · todolimpio2026
+    </button>
+    <p class="hint" id="mensaje" role="status" aria-live="polite"></p>
+
+    <p class="section-title">Seguinos en redes</p>
+    <a class="link social" href="https://www.instagram.com/todo_limpiolv?srtk=MThuOWtpZzY5N3FtNw==" target="_blank" rel="noopener noreferrer">
+      INSTAGRAM
+    </a>
+    <a class="link social" href="https://www.facebook.com/share/1DWGkjxNhm/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
+      FACEBOOK
+    </a>
+
+    <footer>TODO LIMPIO</footer>
+  </main>
+
+  <script>
+    async function copiarAlias(alias) {
+      const mensaje = document.getElementById('mensaje');
+      try {
+        await navigator.clipboard.writeText(alias);
+        mensaje.textContent = 'Alias copiado: ' + alias;
+      } catch (error) {
+        mensaje.textContent = 'No se pudo copiar automáticamente. Alias: ' + alias;
+      }
+    }
+  </script>
+</body>
+</html>

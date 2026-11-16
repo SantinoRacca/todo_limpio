@@ -79,6 +79,25 @@
       color: #28563a;
     }
     .social:hover { background: #dfeade; }
+    .wifi {
+      margin: 0 0 4px;
+      padding: 8px 16px;
+      border-radius: 13px;
+      background: #edf3ed;
+      text-align: left;
+    }
+    .wifi-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin: 0;
+      padding: 10px 0;
+      font-size: .95rem;
+    }
+    .wifi-row + .wifi-row { border-top: 1px solid #d3e0d3; }
+    .wifi-row span { color: #64776a; }
+    .wifi-row strong { color: #28563a; }
     .hint {
       min-height: 18px;
       margin: 8px 0 0;
@@ -107,6 +126,18 @@
     </button>
     <p class="hint" id="mensaje" role="status" aria-live="polite"></p>
 
+    <p class="section-title">WiFi para clientes</p>
+    <div class="wifi">
+      <p class="wifi-row"><span>Red</span><strong>Personal clientes</strong></p>
+      <p class="wifi-row"><span>Contraseña</span><strong>clientes</strong></p>
+    </div>
+    <button class="link" type="button" onclick="copiarTexto('Personal clientes', 'Red WiFi copiada')">
+      COPIAR NOMBRE DE RED
+    </button>
+    <button class="link" type="button" onclick="copiarTexto('clientes', 'Contraseña copiada')">
+      COPIAR CONTRASEÑA
+    </button>
+
     <p class="section-title">Seguinos en redes</p>
     <a class="link social" href="https://www.instagram.com/todo_limpiolv?srtk=MThuOWtpZzY5N3FtNw==" target="_blank" rel="noopener noreferrer">
       INSTAGRAM
@@ -119,14 +150,17 @@
   </main>
 
   <script>
-    async function copiarAlias(alias) {
+    async function copiarTexto(texto, etiqueta) {
       const mensaje = document.getElementById('mensaje');
       try {
-        await navigator.clipboard.writeText(alias);
-        mensaje.textContent = 'Alias copiado: ' + alias;
+        await navigator.clipboard.writeText(texto);
+        mensaje.textContent = etiqueta + ': ' + texto;
       } catch (error) {
-        mensaje.textContent = 'No se pudo copiar automáticamente. Alias: ' + alias;
+        mensaje.textContent = 'No se pudo copiar automáticamente: ' + texto;
       }
+    }
+    function copiarAlias(alias) {
+      return copiarTexto(alias, 'Alias copiado');
     }
   </script>
 </body>
